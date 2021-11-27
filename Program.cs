@@ -6,7 +6,7 @@ namespace Napilnik1
     {
         private int _damage;
         private int _bullet;
-        private int _minBullets;
+        private readonly int _minBullets;
 
         private void BulletsCheaker()
         {
@@ -25,8 +25,8 @@ namespace Napilnik1
 
     class Player
     {
-        private int _maxHealth;
-        private int _minHealth;
+        private readonly int _maxHealth;
+        private readonly int _minHealth;
         private int _health;
 
         private void HealthCheaker()
