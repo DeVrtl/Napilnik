@@ -27,12 +27,11 @@ namespace Napilnik1
     {
         private int _maxHealth;
         private int _minHealth;
-
-        public int Health { get; private set; }
+        private int _health;
 
         private void HealthCheaker()
         {
-            if (Health > _maxHealth || Health < _minHealth)
+            if (_health > _maxHealth || _health < _minHealth)
             {
                 throw new InvalidOperationException();
             }
@@ -40,7 +39,7 @@ namespace Napilnik1
 
         public void TakeDamage(int damge)
         {
-            Health -= damge;
+            _health -= damge;
         }
     }
 
