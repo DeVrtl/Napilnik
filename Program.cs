@@ -4,8 +4,9 @@ namespace Napilnik1
 {
     class Weapon
     {
-        private int _damage;
         private int _bullet;
+        private readonly int _damage;
+        private readonly int _ammoCount;
         private readonly int _minBullets;
 
         private void BulletsCheaker()
@@ -19,7 +20,7 @@ namespace Napilnik1
         public void Fire(Player player)
         {
             player.TakeDamage(_damage);
-            _bullet -= 1;
+            _bullet -= _ammoCount;
         }
     }
 
