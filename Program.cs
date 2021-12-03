@@ -6,12 +6,12 @@ namespace Napilnik1
     {
         private int _bullet;
         private readonly int _damage;
-        private readonly int _ammoCount;
-        private readonly int _minBullets;
+        private readonly int _bulletsForSubtraction;
+        private readonly int _defualtBulletsCount;
 
-        private void BulletsCheaker()
+        private void CanShoot()
         {
-            if (_bullet < _minBullets) 
+            if (_bullet < _defualtBulletsCount) 
             {
                 throw new InvalidOperationException();
             }
@@ -20,7 +20,7 @@ namespace Napilnik1
         public void Fire(Player player)
         {
             player.TakeDamage(_damage);
-            _bullet -= _ammoCount;
+            _bullet -= _bulletsForSubtraction;
         }
     }
 
