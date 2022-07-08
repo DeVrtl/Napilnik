@@ -4,23 +4,26 @@ namespace Napilnik1
 {
     class Weapon
     {
-        private int _bullet;
+        private int _bulletsInMagazine;
         private readonly int _damage;
-        private readonly int _bulletsForSubtraction;
-        private readonly int _defualtBulletsCount;
+        private readonly int _bulletsPerShot;
+        private readonly int _minBulletsCountInMagazine;
 
-        private void CanShoot()
+        private Weapon(int bulletsInMagazine, int damage, int bulletsPerShot, int minBulletsCountInMagazine)
         {
-            if (_bullet < _defualtBulletsCount) 
-            {
-                throw new InvalidOperationException();
-            }
+            _bulletsInMagazine = bulletsInMagazine;
+            _damage = damage;
+            _bulletsPerShot = bulletsPerShot;
+            _minBulletsCountInMagazine = minBulletsCountInMagazine;
         }
 
         public void Fire(Player player)
         {
+            if (_bulletsInMagazine < _minBulletsCountInMagazine)
+                throw new InvalidOperationException();
+            
             player.TakeDamage(_damage);
-            _bullet -= _bulletsForSubtraction;
+            _bulletsInMagazine -= _bulletsPerShot;
         }
     }
 
@@ -30,16 +33,11 @@ namespace Napilnik1
         private readonly int _minHealth;
         private int _health;
 
-        private void HealthCheaker()
-        {
-            if (_health > _maxHealth || _health < _minHealth)
-            {
-                throw new InvalidOperationException();
-            }
-        }
-
         public void TakeDamage(int damge)
         {
+            if (_health > _maxHealth || _health < _minHealth)
+                throw new InvalidOperationException();
+
             _health -= damge;
         }
     }
